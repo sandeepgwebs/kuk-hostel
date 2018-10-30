@@ -6,7 +6,6 @@ use Yii;
 use backend\models\slider;
 use backend\models\sliderSearch;
 use backend\models\sliderimages;
-use backend\models\sliderimagesSearch;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

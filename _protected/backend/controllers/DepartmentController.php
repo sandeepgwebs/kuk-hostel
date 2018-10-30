@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use backend\models\department;
 use backend\models\departmentSearch;
+use yii\data\ActiveDataProvider;
+use backend\models\subject;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -50,20 +52,34 @@ class DepartmentController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
 
-    public function actionView($id)
-    {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }*/
+     */
+//custom work start
 
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+        $model = new Subject();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => Subject::find()->where(['department_id' =>$id]),
         ]);
+        return $this->render('viewsubject', [ 'model' => $model, 'dataProvider'=>$dataProvider]);
+
     }
 
+    public function actionAddsubject($id)
+    {
+        $model =new subject();
+        $model->department_id = $id;
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->department_id]);
+        }
+
+        return $this->render('addsubject', [
+            'model' => $model,
+        ]);
+    }
+//custom work end
     /**
      * Creates a new department model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -74,7 +90,7 @@ class DepartmentController extends Controller
         $model = new department();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -94,7 +110,7 @@ class DepartmentController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index', 'id' => $model->id]);
         }
 
         return $this->render('update', [

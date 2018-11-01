@@ -38,6 +38,7 @@
                 <a href="#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Department</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse">
                     <li><a href="<?=Url::base() ?>/department/">Department</a></li>
+                    <li><a href="<?=Url::base() ?>/designation/">Designation</a></li>
 
                 </ul>
             </li>

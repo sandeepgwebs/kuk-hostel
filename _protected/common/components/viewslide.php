@@ -10,7 +10,7 @@ use yii\base\widget;
 class ViewSlide extends widget
 {
     public function run(){
-        $model = SliderImages::findall(['slider_id'=>1]);
+        $model = SliderImages::findall(['slider_id'=>2]);
 
         $notice = notice::find()->all();
 

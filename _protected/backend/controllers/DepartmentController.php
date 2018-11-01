@@ -79,6 +79,30 @@ class DepartmentController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionSubjectupdate($id)
+    {
+        $model = subject::findOne($id);
+        $model->delete();
+        return $this->redirect(['view', 'id' => $model->department_id]);
+        // return $this->redirect(['editslider','id'=>$model->slider_id]);
+    }
+
+    public function actionEditsubject($id)
+    {
+        $model = subject::findOne($id);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->department_id]);
+        }
+
+      return $this->render('addsubject',['model' => $model,]);
+    }
+
+    public function actionDesignation()
+    {
+        return $this->render('designation');
+    }
+
 //custom work end
     /**
      * Creates a new department model.
@@ -131,6 +155,8 @@ class DepartmentController extends Controller
 
         return $this->redirect(['index']);
     }
+
+
 
     /**
      * Finds the department model based on its primary key value.

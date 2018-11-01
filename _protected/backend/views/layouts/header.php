@@ -1,3 +1,6 @@
+<?php
+use yii\helpers\Html;
+?>
 <div id="page-wrapper" class="gray-bg dashbard-1">
     <div class="row border-bottom">
         <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -110,10 +113,22 @@
                 </li>
 
 
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-sign-out"></i> Log out
-                    </a>
+                <li><?php
+                        if(Yii::$app->user->isGuest) {
+                            ?>
+                            <div class="btn">
+                                <?= Html::a('Login', ['site/login'], []) ?></div>
+                            <div class="btn"> <?= Html::a('Sign Up', ['site/signup'], []) ?></div>
+                            <?php
+                        } else {
+                            ?>
+                            <div class="login.html">
+                                <i class="fa fa-sign-out"></i>(<?= Yii::$app->user->identity->username;?><?= Html::a('Log out', ['site/logout'],[])?>)
+                            </div>
+                            <?php
+                        }
+                        ?>
+
                 </li>
                 <li>
                     <a class="right-sidebar-toggle">

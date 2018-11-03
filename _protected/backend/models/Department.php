@@ -41,4 +41,15 @@ class Department extends \yii\db\ActiveRecord
             'title' => 'Title',
         ];
     }
+
+    public static function dropdown(){
+        static $dropdown;
+        if($dropdown === null){
+            $models = static::find()->all();
+            foreach($models as $model){
+                $dropdown[$model->id]=$model->department;
+            }
+        }
+        return $dropdown;
+    }
 }

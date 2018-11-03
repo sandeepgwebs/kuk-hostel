@@ -37,7 +37,7 @@ class UserAsset extends AssetBundle
     ];
     public $js = [
         'js/custom.js',
-        'js/plugins/gritter/jquery.gritter.css',
+        //'js/plugins/gritter/jquery.gritter.css',
         'js/jquery-2.1.1.js',
         'js/bootstrap.min.js',
         'js/plugins/metisMenu/jquery.metisMenu.js',

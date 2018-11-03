@@ -39,6 +39,7 @@
                 <ul class="nav nav-second-level collapse">
                     <li><a href="<?=Url::base() ?>/department/">Department</a></li>
                     <li><a href="<?=Url::base() ?>/designation/">Designation</a></li>
+                    <li><a href="<?=Url::base() ?>/faculity/">Faculity</a></li>
 
                 </ul>
             </li>

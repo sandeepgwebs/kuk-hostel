@@ -1,5 +1,5 @@
 
-$(document).ready(function() {
+/*$(document).ready(function() {
     setTimeout(function() {
         toastr.options = {
             closeButton: true,
@@ -131,3 +131,4 @@ $(document).ready(function() {
     var Polarchart = new Chart(ctx).PolarArea(polarData, polarOptions);
 
 });
+*/

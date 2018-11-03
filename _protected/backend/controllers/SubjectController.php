@@ -95,6 +95,28 @@ class SubjectController extends Controller
         ]);
     }
 
+
+
+    public function actionViews($id)
+    {
+        $posts = \backend\models\Subject::find()
+            ->where(['department_id' => $id])
+            ->orderBy('id DESC')
+            ->all();
+
+        if (!empty($posts)) {
+            foreach($posts as $post) {
+                echo "<option value='".$post->id."'>".$post->title."</option>";
+            }
+        } else {
+            echo "<option>-</option>";
+        }
+
+    }
+
+
+
+
     /**
      * Deletes an existing subject model.
      * If deletion is successful, the browser will be redirected to the 'index' page.

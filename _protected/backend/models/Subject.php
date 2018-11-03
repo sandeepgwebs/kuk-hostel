@@ -31,6 +31,7 @@ class Subject extends \yii\db\ActiveRecord
         return [
             [['department_id'], 'required'],
             [['department_id'], 'integer'],
+            [['title'], 'required'],
             [['title'], 'string', 'max' => 255],
             [['department_id'], 'exist', 'skipOnError' => true, 'targetClass' => Department::className(), 'targetAttribute' => ['department_id' => 'id']],
         ];
@@ -55,4 +56,15 @@ class Subject extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Department::className(), ['id' => 'department_id']);
     }
-}
+
+    public static function dropdown(){
+        static $dropdown;
+        if($dropdown === null){
+            $models = static::find()->all();
+            foreach($models as $model){
+                $dropdown[$model->id]=$model->subject;
+            }
+        }
+        return $dropdown;
+    }
+ }

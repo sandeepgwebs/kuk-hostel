@@ -103,6 +103,9 @@ class DepartmentController extends Controller
         return $this->render('designation');
     }
 
+
+
+
 //custom work end
     /**
      * Creates a new department model.

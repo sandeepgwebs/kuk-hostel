@@ -75,6 +75,15 @@ class DesignationController extends Controller
         ]);
     }
 
+    public function actionIndexed()
+    {
+        $model = Designation::findOne(2);
+        return $this->render('viewdeprt', [
+            'model' => $model,
+        ]);
+    }
+
+
     /**
      * Updates an existing designation model.
      * If update is successful, the browser will be redirected to the 'view' page.

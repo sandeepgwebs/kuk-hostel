@@ -159,7 +159,23 @@ class DepartmentController extends Controller
         return $this->redirect(['index']);
     }
 
+   /* public function actionViews($id)
+    {
+        echo $id;
+        $posts = Subject::find()
+            ->where(['department_id' => $id])
+            ->orderBy('id DESC')
+            ->all();
 
+        if (!empty($posts)) {
+            foreach($posts as $post) {
+                echo "<option value='".$post->id."'>".$post->title."</option>";
+            }
+        } else {
+            echo "<option>-</option>";
+        }
+
+    }*/
 
     /**
      * Finds the department model based on its primary key value.

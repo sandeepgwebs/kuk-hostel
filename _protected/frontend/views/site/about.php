@@ -12,6 +12,10 @@ $this->params['breadcrumbs'][] = $this->title;
         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
     </div>
 </div>
+<?php
+    echo $model->id . '<br>';
+    echo $model->title;
+?>
 <div class="about-info">
     <div class="container">
         <div class="row">
@@ -55,5 +59,4 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-</div>
 </div>

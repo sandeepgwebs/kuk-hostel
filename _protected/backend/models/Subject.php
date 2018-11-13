@@ -57,14 +57,5 @@ class Subject extends \yii\db\ActiveRecord
         return $this->hasOne(Department::className(), ['id' => 'department_id']);
     }
 
-    public static function dropdown(){
-        static $dropdown;
-        if($dropdown === null){
-            $models = static::find()->all();
-            foreach($models as $model){
-                $dropdown[$model->id]=$model->subject;
-            }
-        }
-        return $dropdown;
-    }
+
  }

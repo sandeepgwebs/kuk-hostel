@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
         <?= Html::a('Back',['index', $model],['class'=>'btn btn-primary'])?>
     </p>
-
+    
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

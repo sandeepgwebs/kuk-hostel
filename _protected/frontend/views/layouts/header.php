@@ -1,6 +1,8 @@
 <?php
+use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
+
 ?>
 <div class="slide-area">
     <header>
@@ -28,7 +30,7 @@ use yii\bootstrap\Nav;
                           <div class="btn"> <?= Html::a('Sign Up', ['site/signup'], []) ?></div>
                           <?php
                             } else {
-                               ?>
+                            ?>
 
                             (<?= Yii::$app->user->identity->username; ?>
                             <?= Html::a('Log out', ['site/logout'], []) ?>)
@@ -40,9 +42,14 @@ use yii\bootstrap\Nav;
                 <div class="search-box">
                     <div class="search">
                         <a class="close-btn">+</a>
-                        <input type="text">
-                        <button class="btn"><i class="icon-search"></i></button>
+                        <?php $form = ActiveForm::begin([
+                            'action'  => ['search'],
+                            'method'  => 'get',
+                        ]);?>
+                        <input id="search" name="search" placeholder="Search Here" class="form-control input-md" required value="" type="text">
+                        <button class="btn"><?=Html::submitButton('<i class="icon-search"></i>', ['class' => 'btn btn-primary'])?></button>
                     </div>
+                    <?php ActiveForm::end();?>
                     <a class="btn search-toggle"><i class="icon-search"></i></a>
                     <div class="contact">
                         <span class="btn btn-primary">+91 181 8888 888</span>

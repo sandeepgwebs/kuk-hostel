@@ -9,7 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
-
+use yii\data\ActiveDataProvider;
+use backend\models\faclist;
 /**
  * FaculityController implements the CRUD actions for faculity model.
  */
@@ -38,7 +39,6 @@ class FaculityController extends Controller
     {
         $searchModel = new faculitySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -53,10 +53,16 @@ class FaculityController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
+       $model = new faclist();
+        $dataProvider = new ActiveDataProvider([
+            'query' => Faclist::find()->where(['id' =>$id]),
         ]);
+        return $this->render('faculityview', [
+            'model' => $model, 'dataProvider'=>$dataProvider]);
+
     }
+
+
 
     /**
      * Creates a new faculity model.

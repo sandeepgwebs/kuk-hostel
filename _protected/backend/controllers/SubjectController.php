@@ -26,6 +26,7 @@ class SubjectController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+
         ];
     }
 
@@ -95,11 +96,9 @@ class SubjectController extends Controller
         ]);
     }
 
-
-
-    public function actionViews($id)
+   public function actionViews($id)
     {
-        $posts = \backend\models\Subject::find()
+         $posts = Subject::find()
             ->where(['department_id' => $id])
             ->orderBy('id DESC')
             ->all();
@@ -109,13 +108,10 @@ class SubjectController extends Controller
                 echo "<option value='".$post->id."'>".$post->title."</option>";
             }
         } else {
-            echo "<option>-</option>";
+            echo "<option>----</option>";
         }
 
     }
-
-
-
 
     /**
      * Deletes an existing subject model.

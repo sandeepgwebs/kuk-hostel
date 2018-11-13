@@ -6,6 +6,10 @@ use common\models\LoginForm;
 use frontend\models\AccountActivation;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
+use backend\models\slider;
+use backend\models\sliderImages;
+use backend\models\sliderImagesSearch;
+use yii\data\ActiveDataProvider;
 use frontend\models\SignupForm;
 use frontend\models\MyForm;
 use frontend\models\ContactForm;
@@ -239,6 +243,67 @@ class SiteController extends Controller
 
         return $this->goHome();
     }
+
+    public function actionSearch()
+    {
+        $model = new ActiveDataProvider([
+            'query'=> SliderImages::find(),
+            'pagination' =>[
+                'pagesize' => 5,
+            ],
+        ]);
+
+        $post = $model->getModels();
+        return $this->render('indexed', ['post' => $post,
+        ]);
+    }
+
+///////
+
+    /*
+     *
+     activate
+    public function actionSearch()
+    {
+        $model = new ActiveDataProvider([
+            'query'=> SliderImages::find(),
+            'pagination' =>[
+               'pagesize' => 5,
+            ],
+        ]);
+
+        $post = $model->getModels();
+            return $this->render('indexed', ['post' => $post,
+        ]);
+    }
+
+    public function actionSearch()
+    {
+        public function run(){
+        $model = sliderImages::find()->all();
+        return $this->render('faculitysir',['model'=>$model]);
+    }
+    }
+
+    public function actionSearch()
+    {
+        $searchModel = new sliderImagesSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('indexed', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+
+     public function actionIndexed()
+    {
+        $model = Designation::findOne(2);
+        return $this->render('index', [
+            'model' => $model,
+        ]);
+    }*/
 
 /*----------------*
  * PASSWORD RESET *

@@ -18,17 +18,22 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
     <div class="three1">
          <?php
-         $CoursesCat = ArrayHelper::map(\backend\models\Department::find()->asArray()->all(),'id', 'title');
-        //$form = ActiveForm::begin();
 
-            echo $form->field($model, 'id')->dropDownList($CoursesCat,['prompt'=>'-Choose a Categorys-','onchange'=>'
-            $.post( "'.Yii::$app->urlManager->createUrl('subject/views?id=').'"+$(this).val(), function(data){
-             $("select#id").html(data);
-            )};
-         ']);
-         $CoursesSubcat = ArrayHelper::map(\backend\models\Subject::find()->asArray()->all(),'id', 'title');
-         echo $form->field($model,'id')->dropDownList($CoursesSubcat,['id'=>'id'] );
-        ?>
+         /*$dataCategory=ArrayHelper::map(backend\models\Department::find()->asArray()->all(), 'id', 'title');
+         echo $form->field($model, 'id')->dropDownList($dataCategory,
+             ['prompt'=>'-Choose a Category-',
+                 'onchange'=>'
+                $.post( "'.Yii::$app->urlManager->createUrl('subject/views?id=').'"+$(this).val(), function(data) {
+                $( "select#id" ).html( data );
+                });']);
+
+                $dataPost=ArrayHelper::map(\backend\models\Subject::find()->asArray()->all(), 'id', 'title');
+                echo $form->field($model, 'id')
+                ->dropDownList(
+                $dataPost,
+                ['id'=>'id']
+                );*/
+         ?>
     </div>
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

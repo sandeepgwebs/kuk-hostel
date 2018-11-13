@@ -4,29 +4,31 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\models\departmentsSearch */
+/* @var $searchModel backend\models\faclistSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Departments';
+$this->title = 'Faclists';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="departments-index">
+<div class="faclist-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Departments', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Faclist', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'title',
+            'designation_id',
+            'department_id',
+            'subject_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
